@@ -5,6 +5,7 @@ import { ORACLE_CARDS } from './constants';
 import { OracleCard, Reading, AppState } from './types';
 import { getOracleReading } from './services/geminiService';
 import OracleCardUI from './components/OracleCardUI';
+import PremiumCard from './components/PremiumCard';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>(AppState.LANDING);
@@ -140,6 +141,8 @@ const App: React.FC = () => {
                    <Sparkles className="w-4 h-4" />
                 </button>
               </div>
+
+              <PremiumCard />
             </div>
           </div>
         )}
@@ -179,6 +182,8 @@ const App: React.FC = () => {
               <button onClick={reset} className="px-10 py-5 rounded-full bg-white text-black font-black font-decorative text-xs uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-xl">
                 Nouveau Tirage
               </button>
+
+              <PremiumCard />
             </div>
           </div>
         )}

@@ -163,3 +163,11 @@ export const SHOP_ITEMS = [
     url: "#"
   }
 ];
+
+// Tirage personnalisé payant. Collez ici le lien de paiement Stripe
+// pour faire apparaître l'encart sur le site (vide = encart caché).
+export const TIRAGE_PREMIUM = {
+  lienPaiement: "",
+  prix: "11 €",
+  delai: "48 heures",
+};
