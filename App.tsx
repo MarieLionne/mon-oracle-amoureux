@@ -8,7 +8,24 @@ import OracleCardUI from './components/OracleCardUI';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>(AppState.LANDING);
-  const [history, setHistory] = useState<Reading[]>([]);
+  // L'historique est gardé dans le navigateur de chaque visiteur,
+  // pour qu'il retrouve ses tirages quand il revient sur le site.
+  const [history, setHistory] = useState<Reading[]>(() => {
+    try {
+      const saved = localStorage.getItem('oracle-historique');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('oracle-historique', JSON.stringify(history.slice(0, 50)));
+    } catch {
+      // stockage indisponible (navigation privée) : l'historique reste en mémoire
+    }
+  }, [history]);
   const [currentReading, setCurrentReading] = useState<Reading | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [userQuestion, setUserQuestion] = useState("");
