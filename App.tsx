@@ -6,9 +6,14 @@ import { OracleCard, Reading, AppState } from './types';
 import { getOracleReading } from './services/geminiService';
 import OracleCardUI from './components/OracleCardUI';
 import PremiumCard from './components/PremiumCard';
+import MentionsLegales from './components/MentionsLegales';
 
 const App: React.FC = () => {
-  const [appState, setAppState] = useState<AppState>(AppState.LANDING);
+  const [appState, setAppState] = useState<AppState>(() =>
+    typeof window !== 'undefined' && window.location.hash === '#mentions-legales'
+      ? AppState.LEGAL
+      : AppState.LANDING
+  );
   // L'historique est gardé dans le navigateur de chaque visiteur,
   // pour qu'il retrouve ses tirages quand il revient sur le site.
   const [history, setHistory] = useState<Reading[]>(() => {
@@ -54,7 +59,14 @@ const App: React.FC = () => {
     drawCard(randomCard);
   };
 
+  const ouvrirMentions = () => {
+    window.history.replaceState(null, '', '#mentions-legales');
+    setAppState(AppState.LEGAL);
+    window.scrollTo(0, 0);
+  };
+
   const reset = () => {
+    if (window.location.hash) window.history.replaceState(null, '', window.location.pathname);
     setAppState(AppState.LANDING);
     setCurrentReading(null);
     setIsFlipped(false);
@@ -189,6 +201,8 @@ const App: React.FC = () => {
         )}
 
         {/* Écran d'Historique */}
+        {appState === AppState.LEGAL && <MentionsLegales onRetour={reset} />}
+
         {appState === AppState.HISTORY && (
           <div className="max-w-3xl mx-auto w-full space-y-10 animate-in fade-in slide-in-from-bottom-8">
             <div className="flex justify-between items-center border-b border-white/10 pb-6">
@@ -225,8 +239,14 @@ const App: React.FC = () => {
       {/* Footer Décoratif */}
       <footer className="relative z-10 py-8 text-center border-t border-white/5">
         <p className="text-[9px] font-decorative uppercase tracking-[0.4em] text-white/20">
-          Créé avec Amour & Lumière — 2024
+          Créé avec Amour & Lumière — {new Date().getFullYear()}
         </p>
+        <button
+          onClick={ouvrirMentions}
+          className="mt-3 text-[9px] font-decorative uppercase tracking-[0.3em] text-white/30 hover:text-white/60 transition-colors"
+        >
+          Mentions légales & CGV
+        </button>
       </footer>
     </div>
   );

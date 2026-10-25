@@ -12,6 +12,7 @@ const PremiumCard: React.FC = () => {
   const [email, setEmail] = useState('');
   const [envoi, setEnvoi] = useState(false);
   const [erreur, setErreur] = useState('');
+  const [accord, setAccord] = useState(false);
 
   if (!TIRAGE_PREMIUM.actif || !TIRAGE_PREMIUM.lienPaiement) return null;
 
@@ -99,6 +100,24 @@ const PremiumCard: React.FC = () => {
             className={champ}
           />
 
+          <label className="flex items-start gap-3 text-xs md:text-sm text-white/60 leading-relaxed cursor-pointer">
+            <input
+              required
+              type="checkbox"
+              checked={accord}
+              onChange={(e) => setAccord(e.target.checked)}
+              className="mt-1 w-4 h-4 accent-fuchsia-500 shrink-0"
+            />
+            <span>
+              J'accepte les{' '}
+              <a href="/#mentions-legales" target="_blank" rel="noopener noreferrer" className="text-fuchsia-300 underline">
+                conditions de vente
+              </a>{' '}
+              et je demande que mon tirage soit réalisé sous {TIRAGE_PREMIUM.delai} : je reconnais perdre mon droit de
+              rétractation une fois la réponse envoyée.
+            </span>
+          </label>
+
           {erreur && <p className="text-rose-300 text-sm text-center">{erreur}</p>}
 
           <div className="text-center pt-2">
@@ -116,10 +135,6 @@ const PremiumCard: React.FC = () => {
           </p>
         </form>
       )}
-
-      <p className="text-[10px] text-white/30 uppercase tracking-widest">
-        Tirage proposé à titre de divertissement et de développement personnel
-      </p>
     </div>
   );
 };

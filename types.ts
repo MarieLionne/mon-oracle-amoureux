@@ -30,5 +30,6 @@ export enum AppState {
   HISTORY = 'HISTORY',
   PRICING = 'PRICING',
   SHOP = 'SHOP',
-  ADMIN = 'ADMIN'
+  ADMIN = 'ADMIN',
+  LEGAL = 'LEGAL'
 }

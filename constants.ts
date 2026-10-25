@@ -173,3 +173,17 @@ export const TIRAGE_PREMIUM = {
   prix: "11 €",
   delai: "48 heures",
 };
+
+// Informations des mentions légales et conditions de vente.
+// Les lignes laissées vides ("") ne s'affichent pas sur le site,
+// mais celles marquées « obligatoire » doivent être complétées dès que vous vendez.
+export const MENTIONS = {
+  nomCommercial: "Marie Lionne – Mon Oracle Amoureux",
+  email: "lionne.energie@gmail.com",
+  nomPrenomLegal: "",      // obligatoire : vos nom et prénom à l'état civil
+  adresse: "",             // obligatoire : adresse postale (ou adresse de domiciliation)
+  telephone: "",           // obligatoire (loi LCEN) pour une personne physique
+  siret: "",               // obligatoire dès que vous avez un statut (ex. micro-entreprise)
+  mentionTva: "",          // ex. « TVA non applicable, art. 293 B du CGI » si vous êtes en franchise
+  mediateur: "",           // obligatoire pour vendre aux particuliers : nom et site du médiateur de la consommation
+};
