@@ -180,8 +180,8 @@ export const TIRAGE_PREMIUM = {
 export const MENTIONS = {
   nomCommercial: "Marie Lionne – Mon Oracle Amoureux",
   email: "lionne.energie@gmail.com",
-  nomPrenomLegal: "",      // obligatoire : vos nom et prénom à l'état civil
-  adresse: "",             // obligatoire : adresse postale (ou adresse de domiciliation)
+  nomPrenomLegal: "Amélie Aurellionnet",      // obligatoire : vos nom et prénom à l'état civil
+  adresse: "1 chemin Creux, 77760 Nanteau-sur-Essonne",             // obligatoire : adresse postale (ou adresse de domiciliation)
   telephone: "",           // obligatoire (loi LCEN) pour une personne physique
   siret: "",               // obligatoire dès que vous avez un statut (ex. micro-entreprise)
   mentionTva: "",          // ex. « TVA non applicable, art. 293 B du CGI » si vous êtes en franchise
