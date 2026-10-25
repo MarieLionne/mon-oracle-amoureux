@@ -164,10 +164,12 @@ export const SHOP_ITEMS = [
   }
 ];
 
-// Tirage personnalisé payant. Collez ici le lien de paiement Stripe
-// pour faire apparaître l'encart sur le site (vide = encart caché).
+// Tirage personnalisé payant.
+// « actif » passe à true une fois Brevo configuré sur Vercel
+// (BREVO_API_KEY et EMAIL_RECEPTION), sinon les questions ne vous arriveraient pas.
 export const TIRAGE_PREMIUM = {
-  lienPaiement: "",
+  actif: false,
+  lienPaiement: "https://buy.stripe.com/6oUfZh04efSm2kb0yn63K00",
   prix: "11 €",
   delai: "48 heures",
 };
