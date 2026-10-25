@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, History, ArrowLeft, Heart, Zap, Star } from 'lucide-react';
 import { ORACLE_CARDS } from './constants';
 import { OracleCard, Reading, AppState } from './types';
+import { getOracleReading } from './services/geminiService';
+import OracleCardUI from './components/OracleCardUI';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>(AppState.LANDING);
