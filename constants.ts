@@ -168,7 +168,7 @@ export const SHOP_ITEMS = [
 // « actif » passe à true une fois Brevo configuré sur Vercel
 // (BREVO_API_KEY et EMAIL_RECEPTION), sinon les questions ne vous arriveraient pas.
 export const TIRAGE_PREMIUM = {
-  actif: false,
+  actif: true,
   lienPaiement: "https://buy.stripe.com/6oUfZh04efSm2kb0yn63K00",
   prix: "11 €",
   delai: "48 heures",
